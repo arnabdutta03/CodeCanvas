@@ -131,3 +131,16 @@ body {
 .forgot-password:hover {
   text-decoration: underline;
 }
+
+.create-acc {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: var(--input-placeholder);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.create-acc:hover {
+  color: var(--heading-color);
+}

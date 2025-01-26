@@ -108,16 +108,17 @@ header .navbar .nav-links a:hover {
   transform: scale(1.05);
 }
 
+
 /* Main section */
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers content vertically */
-  align-items: center; /* Centers content horizontally */
-  height: 120vh;
+  justify-content: center; 
+  align-items: center;
+  min-height: 90vh; 
   text-align: center;
-  width: 100%; /* Ensure it stretches the full width */
-  overflow: auto; /* Allow scrolling if the content overflows */
+  width: 100%; 
+  overflow: auto;
 }
 
 .main-content h1 {
@@ -143,22 +144,23 @@ header .navbar .nav-links a:hover {
   background-color: var(--heading-color);
 }
 
+
 /* Featured posts */
 .featured-posts {
   width: 100%;
-  height: 120vh; /* Set the height to 120vh */
-  margin-top: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center the content vertically */
-  align-items: center; /* Center the content horizontally */
-  overflow: auto; /* Make sure the section itself is scrollable if needed */
+  justify-content: flex-start; 
+  align-items: center;
+  overflow-y: auto; 
+  min-height: 90vh; 
 }
 
-.featured-posts h2 {
-  font-size: 2rem;
+.featured-posts h1 {
+  font-size: 3rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 4rem;
   color: var(--text-color);
 }
 
@@ -166,7 +168,7 @@ header .navbar .nav-links a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  width: 80%; /* Set grid to 80% width */
+  width: 80%; 
 }
 
 .post-card {
@@ -199,6 +201,7 @@ header .navbar .nav-links a:hover {
 .post-card .btn-secondary:hover {
   background-color: var(--secondary-color);
 }
+
 
 /* Footer */
 .footer {
