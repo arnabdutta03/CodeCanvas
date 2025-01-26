@@ -1,0 +1,211 @@
+:root {
+  /* Primary and secondary colors */
+  --primary-color: #4f46e5;
+  --secondary-color: #2f2a8d;
+
+  /* Neutral colors */
+  --heading-color: #1e293b;
+  --text-color: #ffffff;
+  --background-color: #000000;
+
+  /* Glassmorphism styles */
+  --glass-blur: 10px;
+  --glass-opacity: 0.2;
+  --border-radius: 20px;
+
+  /* Gradient colors */
+  --gradient-start: #4f46e5;
+  --gradient-end: #000000;
+
+  /* Input background and placeholder colors */
+  --input-background: #ffffff33;
+  --input-focus: #ffffff4d;
+  --input-placeholder: #ffffff99;
+
+  /* Shadows */
+  --shadow-color: #00000099;
+  --inner-shadow: #ffffff1a;
+  --focus-shadow: #ffffff33;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Plus Jakarta Sans";
+  background-color: var(--background-color);
+  background: radial-gradient(
+    circle at center,
+    var(--gradient-start) 10%,
+    var(--gradient-end) 90%
+  );
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Adjust to let sections flow */
+  align-items: center;
+  overflow-y: auto; /* Make body scrollable */
+}
+
+.landing-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Make container scrollable if needed */
+}
+
+/* Navbar section */
+.header {
+  width: 100%;
+}
+
+header .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5rem;
+  background: var(--shadow-color);
+  box-shadow: 0px 4px 6px var(--shadow-color);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+header .navbar .logo a {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 2rem;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+header .navbar .logo a:hover {
+  color: var(--primary-color);
+  text-shadow: 0 0 8px var(--secondary-color);
+}
+
+header .navbar .nav-links a {
+  color: var(--text-color);
+  margin-left: 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+header .navbar .nav-links a:hover {
+  background-color: var(--gradient-start);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transform: scale(1.05);
+}
+
+/* Main section */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  height: 120vh;
+  text-align: center;
+  width: 100%; /* Ensure it stretches the full width */
+  overflow: auto; /* Allow scrolling if the content overflows */
+}
+
+.main-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.main-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.main-content .btn-primary {
+  padding: 1rem 2rem;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.main-content .btn-primary:hover {
+  background-color: var(--heading-color);
+}
+
+/* Featured posts */
+.featured-posts {
+  width: 100%;
+  height: 120vh; /* Set the height to 120vh */
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the content vertically */
+  align-items: center; /* Center the content horizontally */
+  overflow: auto; /* Make sure the section itself is scrollable if needed */
+}
+
+.featured-posts h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 80%; /* Set grid to 80% width */
+}
+
+.post-card {
+  background: var(--input-background);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  color: var(--text-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.post-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-card p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-card .btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.post-card .btn-secondary:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Footer */
+.footer {
+  background: var(--shadow-color);
+  box-shadow: 0px 4px 6px var(--shadow-color);
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-color);
+}
