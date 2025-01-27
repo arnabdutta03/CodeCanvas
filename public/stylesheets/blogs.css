@@ -91,56 +91,36 @@ header .navbar .logo a:hover {
   text-shadow: 0 0 8px var(--secondary-color);
 }
 
-header .navbar .nav-links a {
+header .navbar .nav-links {
+  display: flex;
+  align-items: center; /* Ensures vertical alignment */
+  gap: 1rem; /* Adds consistent spacing between items */
+}
+
+header .navbar .nav-links button {
   color: var(--text-color);
-  margin-left: 1rem;
+  background-color: rgba(var(--shadow-color), 0.3);
   font-size: 1rem;
   text-decoration: none;
   font-weight: bold;
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
   transition: all 0.3s ease;
+  border: 1px solid var(--text-color);
+  font-family: "Plus Jakarta Sans";
 }
 
-header .navbar .nav-links a:hover {
+header .navbar .nav-links button:hover {
   background-color: var(--gradient-start);
   box-shadow: 0 4px 8px var(--shadow-color);
   transform: scale(1.05);
+  border: none;
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-/* Main section */
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-  text-align: center;
-  width: 100%;
-  overflow: auto;
-}
-
-.main-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.main-content p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.main-content .btn-primary {
-  padding: 1rem 2rem;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  text-decoration: none;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-}
-
-.main-content .btn-primary:hover {
-  background-color: var(--heading-color);
+header .navbar .nav-links img {
+  border-radius: 50%; /* Ensures avatar is circular */
+  display: inline-block; /* Ensures proper spacing in flex container */
 }
 
 /* Featured posts */
@@ -156,25 +136,34 @@ header .navbar .nav-links a:hover {
 .featured-posts h1 {
   font-size: 3rem;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 7rem;
   margin-bottom: 4rem;
   color: var(--text-color);
 }
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  width: 80%;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(400px, 1fr)
+  ); /* Increase the minimum size for larger cards */
+  gap: 2rem; /* Space between the cards */
+  width: 90%; /* Increase the grid width */
+  max-width: 1200px; /* Set a maximum width for better alignment */
+  margin: 0 auto; /* Center the grid container */
 }
 
 .post-card {
   background: var(--input-background);
   border-radius: var(--border-radius);
-  padding: 1.5rem;
+  padding: 2rem; /* Increase padding for larger cards */
   box-shadow: 0 4px 8px var(--shadow-color);
-  margin-bottom: 2rem;
   color: var(--text-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add a hover effect */
+}
+
+.post-card:hover {
+  box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 .post-title {
@@ -186,9 +175,10 @@ header .navbar .nav-links a:hover {
 
 .post-title h3 {
   font-size: 1.5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 75%;
+  white-space: normal; /* Allows the text to wrap onto multiple lines */
+  word-wrap: break-word; /* Breaks long words if necessary */
+  overflow: visible; /* Ensures the full content is displayed */
+  max-width: 100%; /* Ensures it does not exceed the container */
 }
 
 .edit-circle {
@@ -205,15 +195,19 @@ header .navbar .nav-links a:hover {
   cursor: pointer;
 }
 
+.edit-circle:hover .edit-options {
+  display: flex;
+}
+
 .edit-circle .edit-options {
   position: absolute;
-  top: -20px;
-  left: 64px;
+  top: 40px;
+  left: 0;
   background-color: var(--input-background, #fff);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 0.5rem;
-  display: block;
+  display: none; /* Initially hide the edit options */
   flex-direction: column;
   z-index: 100;
 }
@@ -226,6 +220,8 @@ header .navbar .nav-links a:hover {
   font-size: 1rem;
   cursor: pointer;
   color: var(--text-color, #000);
+  font-family: "Plus Jakarta Sans";
+  font-weight: bold;
 }
 
 .edit-circle .edit-options button:hover {
@@ -253,9 +249,19 @@ header .navbar .nav-links a:hover {
   border-radius: 50%;
 }
 
+.post-user #img1,
+.post-user #img2 {
+  margin-left: 0.5rem;
+}
+
+.post-user #img1:hover,
+.post-user #img2:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
 .post-user p {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
 .post-user span {
@@ -263,6 +269,81 @@ header .navbar .nav-links a:hover {
   text-align: right;
   font-size: 0.8rem;
   color: var(--secondary-text-color);
+}
+
+/* new post box section  */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure modal is on top */
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.modal-content .submit-btn {
+  background: #3498db;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-content .submit-btn:hover {
+  background: #2ecc71;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000;
 }
 
 /* Footer */
@@ -273,9 +354,8 @@ header .navbar .nav-links a:hover {
   padding: 1rem;
   text-align: center;
   color: var(--text-color);
+  margin-top: auto; /* Push the footer to the bottom of the page */
 }
-
-
 
 /* scrollbar section */
 
@@ -283,13 +363,13 @@ header .navbar .nav-links a:hover {
   width: 1rem;
 }
 /* 
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    var(--gradient-start)0%,
-    var(--primary-color)35%,
-    var(--secondary-color)100%
-  );
-  border-radius: 8px;
-} */
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      var(--gradient-start)0%,
+      var(--primary-color)35%,
+      var(--secondary-color)100%
+    );
+    border-radius: 8px;
+  } */
