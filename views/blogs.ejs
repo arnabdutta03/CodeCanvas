@@ -1,128 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeCanvas</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/stylesheets/blogs.css" />
-  </head>
-  <body>
-    <div class="landing-container">
-      <!-- navbar section  -->
-      <header class="header">
-        <nav class="navbar">
-          <div class="logo">
-            <a href="/">CodeCanvas</a>
-          </div>
-          <div class="nav-links">
-            <button id="new">New Post</button>
-            <img
-              src="../images/man.png"
-              alt="User Avatar"
-              width="40"
-              height="40"
-            />
-          </div>
-        </nav>
-      </header>
 
-      <!-- post section -->
-      <section class="featured-posts">
-        <h1>New Posts</h1>
-        <div class="posts-grid">
-          <!-- Post 1 -->
-          <div class="post-card">
-            <div class="post-title">
-              <h3>Understanding AI: A Beginner's Guide</h3>
-              <div class="edit-circle">
-                <div class="circle">
-                  <img
-                    src="../images/dots.png"
-                    width="30"
-                    height="30"
-                    alt="options"
-                  />
-                </div>
-                <div class="edit-options hidden">
-                  <button class="edit-btn">Edit</button>
-                  <button class="delete-btn">Delete</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeCanvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/blogs.css" />
+</head>
+
+<body>
+  <div class="landing-container">
+    <!-- navbar section  -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="/">CodeCanvas</a>
+        </div>
+        <div class="nav-links">
+          <button id="new">New Post</button>
+          <img src="../images/man.png" alt="User Avatar" width="40" height="40" />
+        </div>
+      </nav>
+    </header>
+
+    <!-- post section -->
+    <section class="featured-posts">
+      <h1>New Posts</h1>
+      <div class="posts-grid">
+        <!-- Post 1 -->
+        <div class="post-card">
+          <div class="post-title">
+            <h3>Understanding AI: A Beginner's Guide</h3>
+            <div class="edit-circle">
+              <div class="circle">
+                <img src="../images/dots.png" width="30" height="30" alt="options" />
+              </div>
+              <div class="edit-options hidden">
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="post-details">
+            <p>
+              Learn the fundamentals of Artificial Intelligence, covering
+              machine learning, neural networks, and real-world applications.
+            </p>
+          </div>
+          <div class="post-user">
+            <img src="../images/man.png" alt="User Avatar" width="50" height="50" />
+            <p>arnabrock09</p>
+            <img id="img1" src="../images/heart2.png" alt="Like" width="30" height="30" onclick="toggleHeart()" />
+            <img id="img2" src="../images/comment.png" alt="Comment" width="30" height="30" />
+            <span class="post-time">5 min ago</span>
+          </div>
+
+          <div class="comment-section">
+            <div style="position: relative;">
+              <textarea placeholder="Write your comment..."></textarea>
+              <button class="submit-comment">Submit</button>
+            </div>
+            <div class="comments-list">
+              <!-- Comments will go here -->
+              <div class="comments-user">
+                <img src="../images/man.png" alt="User Avatar" width="30" height="30" />
+                <h4>arnabrock09</h4>
+                <p>It's intresting bro! keep writing :) </p>
+                <div class="comment-edit-circle">
+                  <div class="comment-circle">
+                    <img src="../images/dots.png" width="30" height="30" alt="options" />
+                  </div>
+                  <div class="comment-edit-options">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="post-details">
-              <p>
-                Learn the fundamentals of Artificial Intelligence, covering
-                machine learning, neural networks, and real-world applications.
-              </p>
-            </div>
-            <div class="post-user">
-              <img
-                src="../images/man.png"
-                alt="User Avatar"
-                width="50"
-                height="50"
-              />
-              <p>arnabrock09</p>
-              <img
-                id="img1"
-                src="../images/heart.png"
-                alt="Like"
-                width="30"
-                height="30"
-              />
-              <img
-                id="img2"
-                src="../images/comment.png"
-                alt="Comment"
-                width="30"
-                height="30"
-              />
-              <span class="post-time">5 min ago</span>
-            </div>
           </div>
+
+
           <!-- Add more posts here if needed -->
         </div>
-      </section>
+    </section>
 
-      <!-- New post section -->
+    <!-- New post section -->
+    <div id="new-post-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="close-btn">&times;</button>
+        <h2>Create a New Post</h2>
+        <form id="new-post-form">
+          <label for="post-title">Title:</label>
+          <input type="text" id="post-title" placeholder="Enter the post title..." required />
 
-      <div id="new-post-modal" class="modal hidden">
-        <div class="modal-content">
-          <button class="close-btn">&times;</button>
-          <h2>Create a New Post</h2>
-          <form id="new-post-form">
-            <label for="post-title">Title:</label>
-            <input
-              type="text"
-              id="post-title"
-              placeholder="Enter the post title"
-              required
-            />
+          <label for="post-body">Body:</label>
+          <textarea id="post-body" placeholder="Write your post content..." rows="5" required></textarea>
 
-            <label for="post-body">Body:</label>
-            <textarea
-              id="post-body"
-              placeholder="Write your post content"
-              rows="5"
-              required
-            ></textarea>
-
-            <button type="submit" class="submit-btn">Post</button>
-          </form>
-        </div>
+          <button type="submit" class="submit-btn">Post</button>
+        </form>
       </div>
-
-      <!-- footer section -->
-      <footer class="footer">
-        <p>&copy; 2025 CodeCanvas | All Rights Reserved</p>
-      </footer>
     </div>
-    <script src="/public/javascripts/blogs.js"></script>
-  </body>
+
+    <!-- footer section -->
+    <footer class="footer">
+      <p>&copy; 2025 CodeCanvas | All Rights Reserved</p>
+    </footer>
+  </div>
+  <script>
+    // Like button toggle function
+    function toggleHeart() {
+      const img = document.getElementById("img1");
+      if (img.src.includes("heart2.png")) {
+        img.src = "../images/heart_fill2.png";
+      } else {
+        img.src = "../images/heart2.png";
+      }
+    }
+
+    // Show modal when clicking the "New Post" button
+    document
+      .getElementById("new")
+      .addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        document.getElementById("new-post-modal").classList.remove("hidden");
+      });
+
+    // Close modal when clicking the close button
+    document
+      .querySelector(".close-btn") // Use class selector for close button
+      .addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent the click event from bubbling up to the modal background
+        document.getElementById("new-post-modal").classList.add("hidden");
+      });
+
+    // Close modal if clicking outside the modal content (on the modal background)
+    document.addEventListener("click", function (event) {
+      const modal = document.getElementById("new-post-modal");
+      const modalContent = document.querySelector(".modal-content");
+      const newPostBtn = document.getElementById("new");
+
+      // Check if the click happened outside the modal content and modal itself
+      if (event.target === modal && event.target !== modalContent && event.target !== newPostBtn) {
+        modal.classList.add("hidden");
+      }
+    });
+
+    // Handle opening the comment section
+    document.getElementById("img2").addEventListener("click", function () {
+      const commentSection = document.querySelector(".comment-section");
+      commentSection.style.display = commentSection.style.display === "block" ? "none" : "block";
+    });
+  </script>
+
+</body>
+
 </html>

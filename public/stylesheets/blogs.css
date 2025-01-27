@@ -201,8 +201,8 @@ header .navbar .nav-links img {
 
 .edit-circle .edit-options {
   position: absolute;
-  top: 40px;
-  left: 0;
+  top: -10px;
+  left: 40px;
   background-color: var(--input-background, #fff);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -245,10 +245,6 @@ header .navbar .nav-links img {
   gap: 0.5rem;
 }
 
-.post-user img {
-  border-radius: 50%;
-}
-
 .post-user #img1,
 .post-user #img2 {
   margin-left: 0.5rem;
@@ -267,84 +263,278 @@ header .navbar .nav-links img {
 .post-user span {
   margin-left: auto;
   text-align: right;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: var(--secondary-text-color);
 }
 
-/* new post box section  */
+/* New post modal styling */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure modal is on top */
+  z-index: 1000; /* Ensure modal appears on top */
+  backdrop-filter: blur(var(--glass-blur)); /* Apply glassmorphism blur */
 }
 
 .modal.hidden {
-  display: none;
+  display: none; /* Hidden by default */
 }
 
 .modal-content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: rgba(
+    255,
+    255,
+    255,
+    var(--glass-opacity)
+  ); /* Glassmorphism effect */
+  padding: 3rem; /* Increase padding for larger content area */
+  border-radius: var(--border-radius);
+  width: 80%; /* Increase the width */
+  max-width: 800px; /* Increase max-width */
+  box-shadow: 0 4px 12px var(--shadow-color); /* Subtle shadow */
   position: relative;
+  backdrop-filter: blur(15px); /* Further blur behind modal */
 }
 
 .modal-content h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 2.2rem; /* Slightly larger heading */
+  margin-bottom: 2rem; /* Increased margin */
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-color); /* Heading color */
 }
 
 .modal-content label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem; /* Increased margin */
   font-weight: bold;
+  font-size: 1.2rem; /* Increased font size */
+  color: var(--text-color);
 }
 
 .modal-content input,
 .modal-content textarea {
   width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
+  padding: 1.2rem; /* Increased padding */
+  margin-bottom: 1.8rem; /* Increased margin */
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem; /* Slightly larger text */
+  background: var(--input-background);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  overflow-y: auto; /* Enable vertical scrollbar */
+  scrollbar-width: thin; /* For Firefox - make scrollbar thin */
+  scrollbar-color: var(--heading-color) transparent; /* For Firefox - customize scrollbar color */
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border-color: var(--primary-color); /* Highlight input when focused */
+  outline: none;
+  box-shadow: 0 0 5px var(--focus-shadow);
+}
+
+.modal-content input::placeholder,
+.modal-content textarea::placeholder {
+  font-family: "Plus Jakarta Sans";
+  color: var(--input-placeholder);
+}
+
+.modal-content textarea {
+  font-family: "Plus Jakarta Sans";
+  height: 200px; /* Fixed height for textarea */
+  resize: none; /* Prevent resizing */
+}
+
+.modal-content textarea::-webkit-scrollbar-thumb {
+  border-radius: 50px; /* Rounded corners */
 }
 
 .modal-content .submit-btn {
-  background: #3498db;
+  background: var(--primary-color);
   color: #fff;
-  padding: 0.8rem 1.5rem;
+  padding: 1.2rem 2.5rem; /* Increased padding */
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.3rem; /* Slightly larger font size */
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  border-radius: 50px;
 }
 
 .modal-content .submit-btn:hover {
-  background: #2ecc71;
+  background: var(--secondary-color); /* Change to secondary color on hover */
+}
+
+.modal-content .submit-btn:active {
+  transform: scale(1); /* Return to original size when clicked */
 }
 
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px; /* Adjusted position */
+  right: 20px; /* Adjusted position */
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2.5rem; /* Larger close button */
   cursor: pointer;
-  color: #000;
+  color: var(--text-color);
 }
+
+/* Comment section styling */
+.comment-section {
+  margin-top: 1.8rem; /* Adjusted margin for spacing consistency */
+  display: none; /* Initially hidden */
+}
+
+.comment-section textarea {
+  width: 100%;
+  padding: 1.2rem; /* Increased padding */
+  border: 1px solid transparent; /* No visible border */
+  border-radius: 8px; /* Consistent border-radius */
+  font-size: 1.1rem; /* Slightly larger text for readability */
+  background: rgba(
+    255,
+    255,
+    255,
+    var(--glass-opacity)
+  ); /* Glassmorphism effect */
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  overflow-y: auto; /* Enable vertical scrollbar */
+  scrollbar-width: thin; /* Make scrollbar thin */
+  scrollbar-color: var(--heading-color) transparent; /* Customize scrollbar color */
+  resize: none; /* Prevent resizing */
+  font-family: "Plus Jakarta Sans"; /* Apply consistent font */
+}
+
+.comment-section textarea::placeholder{
+  color: var(--text-color);
+}
+
+.comment-section textarea:focus {
+  outline: none;
+}
+
+.comment-section textarea::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.comment-section textarea::-webkit-scrollbar-thumb {
+  background: var(--primary-color); /* Scrollbar thumb color */
+  border-radius: 50px; /* Rounded corners */
+}
+
+.comment-section textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color); /* Change color on hover */
+}
+
+.comment-section .submit-comment {
+  position: absolute; /* Position the button inside the textarea */
+  right: 1.5rem; /* Adjust for alignment */
+  bottom: 1.5rem; /* Adjust for alignment */
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.8rem 1.5rem; /* Compact padding for a smaller button */
+  border: none;
+  border-radius: 50px; /* Consistent border-radius */
+  font-size: 1rem; /* Adjusted font size */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-family: "Plus Jakarta Sans"; /* Consistent font */
+}
+
+.comment-section .submit-comment:hover {
+  background: var(--secondary-color); /* Change to secondary color on hover */
+}
+
+.comment-section .comments-list {
+  margin-top: 1.8rem; /* Adjusted spacing */
+}
+
+.comment-section .comments-list .comments-user {
+  display: flex;
+  align-items: center; /* Vertically center all items */
+  padding: 1rem; /* Adjusted padding */
+  border-radius: 8px; /* Consistent border-radius */
+  margin: 1rem 0; /* Adjusted margin */
+  font-size: 1.1rem; /* Slightly larger font size */
+  font-family: "Plus Jakarta Sans"; /* Consistent font */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  
+}
+
+.comment-section .comments-list .comments-user h4 {
+  margin-left: 0.5rem;
+}
+
+.comment-section .comments-list .comments-user p {
+  margin-left: 1rem;
+}
+
+
+/* comment edit section  */
+
+.comment-edit-circle {
+  position: relative;
+  margin-left: auto;
+}
+
+.comment-edit-circle .comment-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.comment-edit-circle:hover .comment-edit-options {
+  display: flex;
+}
+
+.comment-edit-circle .comment-edit-options {
+  position: absolute;
+  top: -10px;
+  left: 40px;
+  background-color: var(--input-background, #fff);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem;
+  display: none; /* Initially hide the edit options */
+  flex-direction: column;
+  z-index: 100;
+}
+
+.comment-edit-circle .comment-edit-options button {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text-color, #000);
+  font-family: "Plus Jakarta Sans";
+  font-weight: bold;
+}
+
+.comment-edit-circle .comment-edit-options button:hover {
+  background-color: var(--gradient-start);
+  border-radius: 10px;
+}
+
+
 
 /* Footer */
 .footer {
