@@ -1,97 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeCanvas</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/stylesheets/index.css" />
-  </head>
-  <body>
-    <div class="landing-container">
-      <!-- navbar section  -->
-      <header class="header">
-        <nav class="navbar">
-          <div class="logo">
-            <a href="/">CodeCanvas</a>
-          </div>
-          <div class="nav-links">
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-          </div>
-        </nav>
-      </header>
 
-      <!-- main section -->
-      <section class="main">
-        <div class="main-content">
-          <h1>Welcome to My Blog</h1>
-          <p>
-            Your go-to place for insightful articles, posts, and discussions.
-          </p>
-          <a href="/register" class="btn-primary">Explore Posts</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeCanvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/index.css" />
+</head>
+
+<body>
+  <div class="landing-container">
+    <!-- navbar section  -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="/">CodeCanvas</a>
         </div>
-      </section>
+        <div class="nav-links">
+          <a href="/login">Login</a>
+          <a href="/register">Register</a>
+        </div>
+      </nav>
+    </header>
 
-      <!-- featured-posts section -->
-      <section class="featured-posts">
-        <h1>Featured Posts</h1>
-        <div class="posts-grid">
-          <div class="post-card">
-            <div class="post-title">
-              <h3>Understanding AI: A Beginner's Guide</h3>
-              <div class="edit-circle">
-                <div class="circle" onclick="toggleEditOptions(this)">
-                  <img
-                    src="../images/dots.png"
-                    width="30"
-                    height="30"
-                    alt="options"
-                  />
-                </div>
+    <!-- main section -->
+    <section class="main">
+      <div class="main-content">
+        <h1>Welcome to <span>CodeCanvas</span></h1>
+        <p>
+          Explore a hub of knowledge, where ideas, creativity, and innovation come together.
+        </p>
+        <a href="/register" class="btn-primary">Explore Posts</a>
+      </div>
+    </section>
+
+    <!-- featured-posts section -->
+    <section class="featured-posts">
+      <h1>Featured Posts</h1>
+      <div class="posts-grid">
+        
+        <div class="post-card">
+          <div class="post-title">
+            <h3>Understanding AI: A Beginner's Guide</h3>
+            <div class="edit-circle">
+              <div class="circle" onclick="toggleEditOptions(this)">
+                <img src="../images/dots.png" width="30" height="30" alt="options" />
               </div>
             </div>
-            <div class="post-details">
-              <p>
-                Learn the fundamentals of Artificial Intelligence, covering
-                machine learning, neural networks, and real-world applications.
-              </p>
-            </div>
-            <div class="post-user">
-              <img
-                src="../images/man.png"
-                alt="User Avatar"
-                width="50"
-                height="50"
-              />
-              <p>arnabrock09</p>
-              <img
-                src="../images/heart.png"
-                alt="Like"
-                width="20"
-                height="20"
-              />
-              <img
-                src="../images/comment.png"
-                alt="Comment"
-                width="20"
-                height="20"
-              />
-              <span class="post-time">5 min ago</span>
-            </div>
+          </div>
+          <div class="post-details">
+            <p>
+              Learn the fundamentals of Artificial Intelligence, covering
+              machine learning, neural networks, and real-world applications.
+            </p>
+          </div>
+          <div class="post-user">
+            <img src="../images/man.png" alt="User Avatar" width="50" height="50" />
+            <p>arnabrock09</p>
+            <img src="../images/heart2.png" alt="Like" width="20" height="20" />
+            <img src="../images/comment.png" alt="Comment" width="20" height="20" />
+            <span class="post-time">5 min ago</span>
           </div>
         </div>
-      </section>
+        
+        <div class="post-card">
+          <div class="post-title">
+            <h3>The Future of Renewable Energy</h3>
+            <div class="edit-circle">
+              <div class="circle" onclick="toggleEditOptions(this)">
+                <img src="../images/dots.png" width="30" height="30" alt="options" />
+              </div>
+            </div>
+          </div>
+          <div class="post-details">
+            <p>
+              Discover how solar, wind, and tidal energy are paving the way
+              for a sustainable future with clean power.
+            </p>
+          </div>
+          <div class="post-user">
+            <img src="../images/woman.png" alt="User Avatar" width="50" height="50" />
+            <p>Priti</p>
+            <img src="../images/heart2.png" alt="Like" width="20" height="20" />
+            <img src="../images/comment.png" alt="Comment" width="20" height="20" />
+            <span class="post-time">15 min ago</span>
+          </div>
+        </div>
 
-      <!-- footer section -->
-      <footer class="footer">
-        <p>&copy; 2025 CodeCanvas | All Rights Reserved</p>
-      </footer>
-    </div>
-  </body>
+        <div class="post-card">
+          <div class="post-title">
+            <h3>Exploring Quantum Computing</h3>
+            <div class="edit-circle">
+              <div class="circle" onclick="toggleEditOptions(this)">
+                <img src="../images/dots.png" width="30" height="30" alt="options" />
+              </div>
+            </div>
+          </div>
+          <div class="post-details">
+            <p>
+              Dive into the world of quantum computing and discover how it
+              revolutionizes problem-solving in cryptography and optimization.
+            </p>
+          </div>
+          <div class="post-user">
+            <img src="../images/man.png" alt="User Avatar" width="50" height="50" />
+            <p>Chandan</p>
+            <img src="../images/heart2.png" alt="Like" width="20" height="20" />
+            <img src="../images/comment.png" alt="Comment" width="20" height="20" />
+            <span class="post-time">10 min ago</span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-title">
+            <h3>Blockchain Beyond Cryptocurrency</h3>
+            <div class="edit-circle">
+              <div class="circle" onclick="toggleEditOptions(this)">
+                <img src="../images/dots.png" width="30" height="30" alt="options" />
+              </div>
+            </div>
+          </div>
+          <div class="post-details">
+            <p>
+              Explore the potential of blockchain technology in supply chain
+              management, healthcare, and digital identity.
+            </p>
+          </div>
+          <div class="post-user">
+            <img src="../images/man.png" alt="User Avatar" width="50" height="50" />
+            <p>shubham</p>
+            <img src="../images/heart2.png" alt="Like" width="20" height="20" />
+            <img src="../images/comment.png" alt="Comment" width="20" height="20" />
+            <span class="post-time">20 min ago</span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-title">
+            <h3>Mastering Web Development</h3>
+            <div class="edit-circle">
+              <div class="circle" onclick="toggleEditOptions(this)">
+                <img src="../images/dots.png" width="30" height="30" alt="options" />
+              </div>
+            </div>
+          </div>
+          <div class="post-details">
+            <p>
+              Learn how to create dynamic and responsive websites using the
+              latest web development technologies and frameworks.
+            </p>
+          </div>
+          <div class="post-user">
+            <img src="../images/man.png" alt="User Avatar" width="50" height="50" />
+            <p>sourav</p>
+            <img src="../images/heart2.png" alt="Like" width="20" height="20" />
+            <img src="../images/comment.png" alt="Comment" width="20" height="20" />
+            <span class="post-time">25 min ago</span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-title">
+            <h3>Introduction to Data Science</h3>
+            <div class="edit-circle">
+              <div class="circle" onclick="toggleEditOptions(this)">
+                <img src="../images/dots.png" width="30" height="30" alt="options" />
+              </div>
+            </div>
+          </div>
+          <div class="post-details">
+            <p>
+              Learn the basics of data science, including data visualization,
+              machine learning, and predictive analytics.
+            </p>
+          </div>
+          <div class="post-user">
+            <img src="../images/woman.png" alt="User Avatar" width="50" height="50" />
+            <p>ahana</p>
+            <img src="../images/heart2.png" alt="Like" width="20" height="20" />
+            <img src="../images/comment.png" alt="Comment" width="20" height="20" />
+            <span class="post-time">30 min ago</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- footer section -->
+    <footer class="footer">
+      <p>&copy; 2025 CodeCanvas | All Rights Reserved</p>
+    </footer>
+  </div>
+</body>
+
 </html>

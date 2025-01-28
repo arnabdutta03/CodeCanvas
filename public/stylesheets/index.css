@@ -122,12 +122,19 @@ header .navbar .nav-links a:hover {
 
 .main-content h1 {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.main-content h1 span{
+  color: #ffdc41;
+  text-shadow: 0 0 8px #a18b26;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .main-content p {
   font-size: 1.25rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.8rem;
 }
 
 .main-content .btn-primary {
@@ -140,7 +147,7 @@ header .navbar .nav-links a:hover {
 }
 
 .main-content .btn-primary:hover {
-  background-color: var(--heading-color);
+  background-color: #1e1b5f;
 }
 
 /* Featured posts */
@@ -186,7 +193,7 @@ header .navbar .nav-links a:hover {
 
 .post-title h3 {
   font-size: 1.5rem;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   max-width: 75%;
 }
@@ -249,18 +256,20 @@ header .navbar .nav-links a:hover {
   gap: 0.5rem;
 }
 
-.post-user img {
-  border-radius: 50%;
-}
-
 .post-user p {
   margin: 0;
   font-size: 0.9rem;
+  align-items: center;
+}
+
+.post-user img {
+  align-items: center;
 }
 
 .post-user span {
   margin-left: auto;
   text-align: right;
+  align-items: center;
   font-size: 0.8rem;
   color: var(--secondary-text-color);
 }
@@ -274,8 +283,6 @@ header .navbar .nav-links a:hover {
   text-align: center;
   color: var(--text-color);
 }
-
-
 
 /* scrollbar section */
 
