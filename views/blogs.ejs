@@ -31,6 +31,7 @@
     <section class="featured-posts">
       <h1>New Posts</h1>
       <div class="posts-grid">
+
         <!-- Post 1 -->
         <div class="post-card">
           <div class="post-title">
@@ -54,8 +55,8 @@
           <div class="post-user">
             <img src="../images/man.png" alt="User Avatar" width="50" height="50" />
             <p>arnabrock09</p>
-            <img id="img1" src="../images/heart2.png" alt="Like" width="30" height="30" onclick="toggleHeart()" />
-            <img id="img2" src="../images/comment.png" alt="Comment" width="30" height="30" />
+            <img class="like-btn" src="../images/heart2.png" alt="Like" width="30" height="30" />
+            <img class="comment-btn" src="../images/comment.png" alt="Comment" width="30" height="30" />
             <span class="post-time">5 min ago</span>
           </div>
 
@@ -67,9 +68,9 @@
             <div class="comments-list">
               <!-- Comments will go here -->
               <div class="comments-user">
-                <img src="../images/man.png" alt="User Avatar" width="30" height="30" />
-                <h4>arnabrock09</h4>
-                <p>It's intresting bro! keep writing :) </p>
+                <img src="../images/woman.png" alt="User Avatar" width="30" height="30" />
+                <h4>ahana</h4>
+                <p>It's interesting bro! keep writing :) </p>
                 <div class="comment-edit-circle">
                   <div class="comment-circle">
                     <img src="../images/dots.png" width="30" height="30" alt="options" />
@@ -82,10 +83,62 @@
               </div>
             </div>
           </div>
-
-
-          <!-- Add more posts here if needed -->
         </div>
+
+        <!-- Post 2 -->
+        <div class="post-card">
+          <div class="post-title">
+            <h3>Introduction to Data Science</h3>
+            <div class="edit-circle">
+              <div class="circle">
+                <img src="../images/dots.png" width="30" height="30" alt="options" />
+              </div>
+              <div class="edit-options hidden">
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="post-details">
+            <p>
+              Learn the basics of data science, including data visualization, machine learning, and predictive
+              analytics.
+            </p>
+          </div>
+          <div class="post-user">
+            <img src="../images/woman.png" alt="User Avatar" width="50" height="50" />
+            <p>ahana</p>
+            <img class="like-btn" src="../images/heart2.png" alt="Like" width="30" height="30" />
+            <img class="comment-btn" src="../images/comment.png" alt="Comment" width="30" height="30" />
+            <span class="post-time">30 min ago</span>
+          </div>
+
+          <div class="comment-section">
+            <div style="position: relative;">
+              <textarea placeholder="Write your comment..."></textarea>
+              <button class="submit-comment">Submit</button>
+            </div>
+            <div class="comments-list">
+              <!-- Comments will go here -->
+              <div class="comments-user">
+                <img src="../images/woman.png" alt="User Avatar" width="30" height="30" />
+                <h4>arnabrock09</h4>
+                <p>then tell me what is data visualization :) </p>
+                <div class="comment-edit-circle">
+                  <div class="comment-circle">
+                    <img src="../images/dots.png" width="30" height="30" alt="options" />
+                  </div>
+                  <div class="comment-edit-options">
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
     </section>
 
     <!-- New post section -->
@@ -112,8 +165,8 @@
   </div>
   <script>
     // Like button toggle function
-    function toggleHeart() {
-      const img = document.getElementById("img1");
+    function toggleHeart(event) {
+      const img = event.target;
       if (img.src.includes("heart2.png")) {
         img.src = "../images/heart_fill2.png";
       } else {
@@ -121,39 +174,19 @@
       }
     }
 
-    // Show modal when clicking the "New Post" button
-    document
-      .getElementById("new")
-      .addEventListener("click", function (event) {
-        event.stopPropagation(); // Prevent the event from propagating to the document
-        document.getElementById("new-post-modal").classList.remove("hidden");
-      });
-
-    // Close modal when clicking the close button
-    document
-      .querySelector(".close-btn") // Use class selector for close button
-      .addEventListener("click", function (event) {
-        event.stopPropagation(); // Prevent the click event from bubbling up to the modal background
-        document.getElementById("new-post-modal").classList.add("hidden");
-      });
-
-    // Close modal if clicking outside the modal content (on the modal background)
-    document.addEventListener("click", function (event) {
-      const modal = document.getElementById("new-post-modal");
-      const modalContent = document.querySelector(".modal-content");
-      const newPostBtn = document.getElementById("new");
-
-      // Check if the click happened outside the modal content and modal itself
-      if (event.target === modal && event.target !== modalContent && event.target !== newPostBtn) {
-        modal.classList.add("hidden");
-      }
+    // Add event listeners to all like buttons
+    document.querySelectorAll('.like-btn').forEach(function (btn) {
+      btn.addEventListener('click', toggleHeart);
     });
 
-    // Handle opening the comment section
-    document.getElementById("img2").addEventListener("click", function () {
-      const commentSection = document.querySelector(".comment-section");
-      commentSection.style.display = commentSection.style.display === "block" ? "none" : "block";
+    // Handle opening the comment section for each post
+    document.querySelectorAll('.comment-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const commentSection = btn.closest('.post-card').querySelector('.comment-section');
+        commentSection.style.display = commentSection.style.display === "block" ? "none" : "block";
+      });
     });
+
   </script>
 
 </body>

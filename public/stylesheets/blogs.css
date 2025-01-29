@@ -143,15 +143,13 @@ header .navbar .nav-links img {
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(400px, 1fr)
-  ); /* Increase the minimum size for larger cards */
+  grid-template-columns: 1fr; /* Make sure there is only 1 column */
   gap: 2rem; /* Space between the cards */
   width: 90%; /* Increase the grid width */
   max-width: 1200px; /* Set a maximum width for better alignment */
   margin: 0 auto; /* Center the grid container */
 }
+
 
 .post-card {
   background: var(--input-background);
