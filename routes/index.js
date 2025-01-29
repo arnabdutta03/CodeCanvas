@@ -25,7 +25,7 @@ router.get('/blogs', function (req, res, next) {
 
 router.post('/register', UserController.UserRegister);
 router.post('/login', UserController.UserLogin);
-router.post('/blogs', UserController.UserLogin);
+// router.post('/blogs', UserController.UserLogin);
 
 
 module.exports = router;

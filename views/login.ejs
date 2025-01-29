@@ -1,47 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeCanvas</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/stylesheets/login.css" />
-  </head>
-  <body>
-    <div class="glass-container">
-      <div class="login-card">
-        <h1 class="login-heading">Sign In</h1>
-        <form class="login-form" action="/login" method="POST">
-          <div class="form-group">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn-submit">Login</button>
-          </div>
-          <p class="forgot-password">Forgot your password?</p>
-          <a href="/register" class="create-acc">Create an Account</a>
-        </form>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeCanvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/login.css" />
+</head>
+
+<body>
+  <div class="glass-container">
+    <div class="login-card">
+      <h1 class="login-heading">Sign In</h1>
+      <form class="login-form" action="/login" method="POST">
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" name="password" placeholder="Password" required />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn-submit">Login</button>
+        </div>
+        <p class="forgot-password">Forgot your password?</p>
+        <a href="/register" class="create-acc">Create an Account</a>
+      </form>
     </div>
-  </body>
+  </div>
+
+</body>
+<script>
+  function showPopup(message, type) {
+    // Check if a popup already exists, remove it
+    const existingPopup = document.querySelector(".popup");
+    if (existingPopup) {
+      existingPopup.remove();
+    }
+
+    // Create a new popup div
+    const popup = document.createElement("div");
+    popup.classList.add("popup", type);
+    popup.innerText = message;
+
+    // Append popup to body
+    document.body.appendChild(popup);
+
+    // Make popup visible
+    popup.style.display = "block";
+
+    // Hide popup after 3 seconds
+    setTimeout(() => {
+      popup.classList.add("fade-out");
+      setTimeout(() => popup.remove(), 500);
+    }, 3000);
+  }
+
+  // Function to check for error messages in URL
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  // Show popup only if there is an error message
+  document.addEventListener("DOMContentLoaded", function () {
+    const errorMessage = getQueryParam("error");
+    if (errorMessage) {
+      showPopup(errorMessage, "error");
+      history.replaceState(null, "", "/login"); // Remove error from URL
+    }
+  });
+</script>
+
+
 </html>

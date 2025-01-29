@@ -50,29 +50,27 @@ exports.UserRegister = async (request, response) => {
   }
 };
 
-
 exports.UserLogin = async (req, res) => {
   try {
     let userdata = req.body;
     const isUserExist = await user.findOne({ email: userdata.email });
 
-    bcrypt.compare(
-      userdata.password,
-      isUserExist.password,
-      async function (err, result) {
-        // result == true
-        if (err) {
-          console.log(err);
-        } else {
-          if (result) {
-            return res.status(201).redirect('/views/blogs.ejs');
-          } else {
-            res.send({ message: "Invalid login details" });
-          }
-        }
+    if (!isUserExist) {
+      return res.redirect("/login?error=Invalid login details");
+    }
+
+    bcrypt.compare(userdata.password, isUserExist.password, async function (err, result) {
+      if (err) {
+        return res.redirect("/login?error=Internal server error");
       }
-    );
+
+      if (result) {
+        return res.status(201).json({ redirect: "/blogs" });
+      } else {
+        return res.redirect("/login?error=Invalid login details");
+      }
+    });
   } catch (error) {
-    res.send({ message: "Internal server error", err: error });
+    res.redirect("/login?error=Internal server error");
   }
 };

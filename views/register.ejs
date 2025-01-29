@@ -40,5 +40,45 @@
     </div>
   </div>
 </body>
+<script>
+  function showPopup(message, type) {
+    // Check if a popup already exists, remove it
+    const existingPopup = document.querySelector(".popup");
+    if (existingPopup) {
+      existingPopup.remove();
+    }
 
+    // Create a new popup div
+    const popup = document.createElement("div");
+    popup.classList.add("popup", type);
+    popup.innerText = message;
+
+    // Append popup to body
+    document.body.appendChild(popup);
+
+    // Make popup visible
+    popup.style.display = "block";
+
+    // Hide popup after 3 seconds
+    setTimeout(() => {
+      popup.classList.add("fade-out");
+      setTimeout(() => popup.remove(), 500);
+    }, 3000);
+  }
+
+  // Function to check for error messages in URL
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  // Show popup only if there is an error message
+  document.addEventListener("DOMContentLoaded", function () {
+    const errorMessage = getQueryParam("error");
+    if (errorMessage) {
+      showPopup(errorMessage, "error");
+      history.replaceState(null, "", "/login"); // Remove error from URL
+    }
+  });
+</script>
 </html>
