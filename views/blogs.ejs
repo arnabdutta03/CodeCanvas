@@ -23,6 +23,7 @@
         <div class="nav-links">
           <button id="new">New Post</button>
           <img src="../images/man.png" alt="User Avatar" width="40" height="40" />
+          <h1>arnabrock09</h1>
         </div>
       </nav>
     </header>
@@ -163,6 +164,7 @@
       <p>&copy; 2025 CodeCanvas | All Rights Reserved</p>
     </footer>
   </div>
+
   <script>
     // Like button toggle function
     function toggleHeart(event) {
@@ -187,6 +189,73 @@
       });
     });
 
+    // Show modal when clicking the "New Post" button
+    document
+      .getElementById("new")
+      .addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent the event from propagating to the document
+        document.getElementById("new-post-modal").classList.remove("hidden");
+      });
+    // Close modal when clicking the close button
+    document
+      .querySelector(".close-btn") // Use class selector for close button
+      .addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent the click event from bubbling up to the modal background
+        document.getElementById("new-post-modal").classList.add("hidden");
+      });
+    // Close modal if clicking outside the modal content (on the modal background)
+    document.addEventListener("click", function (event) {
+      const modal = document.getElementById("new-post-modal");
+      const modalContent = document.querySelector(".modal-content");
+      const newPostBtn = document.getElementById("new");
+      // Check if the click happened outside the modal content and modal itself
+      if (event.target === modal && event.target !== modalContent && event.target !== newPostBtn) {
+        modal.classList.add("hidden");
+      }
+    });
+
+
+    // popup section JS
+
+    function showPopup(message, type) {
+      // Check if a popup already exists, remove it
+      const existingPopup = document.querySelector(".popup");
+      if (existingPopup) {
+        existingPopup.remove();
+      }
+  
+      // Create a new popup div
+      const popup = document.createElement("div");
+      popup.classList.add("popup", type);
+      popup.innerText = message;
+  
+      // Append popup to body
+      document.body.appendChild(popup);
+  
+      // Make popup visible
+      popup.style.display = "block";
+  
+      // Hide popup after 3 seconds
+      setTimeout(() => {
+        popup.classList.add("fade-out");
+        setTimeout(() => popup.remove(), 500);
+      }, 3000);
+    }
+  
+    // Function to check for error messages in URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+  
+    // Show popup only if there is an error message
+    document.addEventListener("DOMContentLoaded", function () {
+      const errorMessage = getQueryParam("error");
+      if (errorMessage) {
+        showPopup(errorMessage, "error");
+        history.replaceState(null, "", "/login"); // Remove error from URL
+      }
+    });
   </script>
 
 </body>

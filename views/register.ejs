@@ -26,10 +26,10 @@
             pattern="[a-zA-Z0-9._%+-]+@gmail\.com$" />
         </div>
         <div class="form-group">
-          <input type="text" id="phone" name="phone" placeholder="Phone Number" required pattern="^\d{10}$" />
+          <input type="text" id="phone" name="phone" placeholder="Phone Number" pattern="^\d{10}$" required />
         </div>
         <div class="form-group">
-          <input type="password" id="password" name="password" placeholder="Password" required />
+          <input type="password" id="password" name="password" placeholder="Password" minlength="8" required />
         </div>
         <div class="form-group">
           <button type="submit" class="btn-submit">Register</button>
@@ -41,30 +41,6 @@
   </div>
 </body>
 <script>
-  function showPopup(message, type) {
-    // Check if a popup already exists, remove it
-    const existingPopup = document.querySelector(".popup");
-    if (existingPopup) {
-      existingPopup.remove();
-    }
-
-    // Create a new popup div
-    const popup = document.createElement("div");
-    popup.classList.add("popup", type);
-    popup.innerText = message;
-
-    // Append popup to body
-    document.body.appendChild(popup);
-
-    // Make popup visible
-    popup.style.display = "block";
-
-    // Hide popup after 3 seconds
-    setTimeout(() => {
-      popup.classList.add("fade-out");
-      setTimeout(() => popup.remove(), 500);
-    }, 3000);
-  }
 
   // Function to check for error messages in URL
   function getQueryParam(param) {
@@ -75,9 +51,66 @@
   // Show popup only if there is an error message
   document.addEventListener("DOMContentLoaded", function () {
     const errorMessage = getQueryParam("error");
+    const successMessage = getQueryParam("success");
+
     if (errorMessage) {
+      function showPopup(message, type) {
+        // Check if a popup already exists, remove it
+        const existingPopup = document.querySelector(".popup");
+        if (existingPopup) {
+          existingPopup.remove();
+        }
+    
+        // Create a new popup div
+        const popup = document.createElement("div");
+        popup.classList.add("popup", type);
+        popup.innerText = message;
+    
+        // Append popup to body
+        document.body.appendChild(popup);
+    
+        // Make popup visible
+        popup.style.display = "block";
+    
+        // Hide popup after 3 seconds
+        setTimeout(() => {
+          popup.classList.add("fade-out");
+          setTimeout(() => popup.remove(), 500);
+        }, 3000);
+      }
       showPopup(errorMessage, "error");
-      history.replaceState(null, "", "/login"); // Remove error from URL
+      history.replaceState(null, "", "/register");
+    }
+
+    if (successMessage) {
+      function showPopup(message, type) {
+        // Check if a popup already exists, remove it
+        const existingPopup = document.querySelector(".popup");
+        if (existingPopup) {
+          existingPopup.remove();
+        }
+    
+        // Create a new popup div
+        const popup = document.createElement("div");
+        popup.classList.add("popup", type);
+        popup.innerText = message;
+
+        popup.style.backgroundColor = "#4caf50e6";
+    
+        // Append popup to body
+        document.body.appendChild(popup);
+    
+        // Make popup visible
+        popup.style.display = "block";
+    
+        // Hide popup after 3 seconds
+        setTimeout(() => {
+          popup.classList.add("fade-out");
+          setTimeout(() => popup.remove(), 500);
+        }, 3000);
+      }
+      showPopup(successMessage, "success");
+      history.replaceState(null, "", "/register");
     }
   });
 </script>
